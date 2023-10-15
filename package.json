@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "lint": "npx @biomejs/biome check ./src/index.ts",
+    "fmt": "npx @biomejs/biome format ./src/index.ts --write"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   },
   "homepage": "https://github.com/zeon256/segment-tree-ts#readme",
   "devDependencies": {
+    "@biomejs/biome": "1.2.2",
     "@types/node": "^20.2.3",
     "typescript": "^5.0.4"
   },
