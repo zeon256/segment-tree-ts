@@ -1,0 +1,30 @@
+{
+  "name": "segment-tree-ts",
+  "version": "0.1.0",
+  "description": "Efficient segment tree implementation for NodeJS/Bun/Browser",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeon256/segment-tree-ts.git"
+  },
+  "keywords": [
+    "segment-trees"
+  ],
+  "author": "Budi Syahiddin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeon256/segment-tree-ts/issues"
+  },
+  "homepage": "https://github.com/zeon256/segment-tree-ts#readme",
+  "devDependencies": {
+    "@types/node": "^20.2.3",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
