@@ -1,26 +1,26 @@
-export type AssociativeOperation<T> = { combine(a: T, b: T): T };
+export type Operation<T> = { combine(a: T, b: T): T };
 export type Identity<N> = { identity: N };
 export type NumberOrObject = number | { value: number };
 
-export function getValue<T>(n: NumberOrObject) {
+export function getValue(n: NumberOrObject) {
 	return typeof n === "number" ? n : n.value;
 }
 
 export class SegmentTree {
 	private readonly buf: NumberOrObject[];
 	private readonly n: number;
-	private readonly fn: AssociativeOperation<NumberOrObject> & Identity<NumberOrObject>;
+	private readonly fn: Operation<NumberOrObject> & Identity<NumberOrObject>;
 
-	constructor(data: NumberOrObject[], f: AssociativeOperation<NumberOrObject> & Identity<NumberOrObject>) {
+	constructor(data: NumberOrObject[], fn: Operation<NumberOrObject> & Identity<NumberOrObject>) {
 		const n = data.length;
 		const buf = new Array<NumberOrObject>(n << 1);
 
 		for (let i = 0; i < n; ++i) buf[i + n] = data[i];
-		for (let i = n - 1; i > 0; --i) buf[i] = f.combine(buf[i << 1], buf[(i << 1) | 1]);
+		for (let i = n - 1; i > 0; --i) buf[i] = fn.combine(buf[i << 1], buf[(i << 1) | 1]);
 
 		this.buf = buf;
 		this.n = n;
-		this.fn = f;
+		this.fn = fn;
 	}
 
 	public update(i: number, v: NumberOrObject) {

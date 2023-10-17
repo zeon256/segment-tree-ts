@@ -2,12 +2,21 @@
   "name": "segment-tree-ts",
   "version": "0.1.0",
   "description": "Efficient segment tree implementation for NodeJS/Bun/Browser",
-  "main": "dist/index.js",
+  "files": ["dist/*"],
+  "main": "./dist/lib.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/lib.js",
+      "types": "./dist/lib.d.ts"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/index.ts",
-    "lint": "npx @biomejs/biome check ./src/index.ts",
-    "fmt": "npx @biomejs/biome format ./src/index.ts --write"
+    "dev": "ts-node src/lib.ts",
+    "lint": "npx @biomejs/biome check ./src/lib.ts",
+    "fmt": "npx @biomejs/biome format ./src/lib.ts --write",
+    "build": "rm -rf ./dist && node build.cjs && npx tsc"
   },
   "repository": {
     "type": "git",
@@ -25,9 +34,8 @@
   "devDependencies": {
     "@biomejs/biome": "1.2.2",
     "@types/node": "^20.2.3",
-    "typescript": "^5.0.4"
-  },
-  "dependencies": {
+    "typescript": "^5.0.4",
+    "esbuild": "^0.19.4",
     "ts-node": "^10.9.1"
   }
 }
